@@ -5,6 +5,7 @@ var angularCookies = require('angular-cookies');
 var MainRoute = require('./config/RouteConfig');
 var RouteChangedHandler = require('./config/RouteChangedHandler');
 
+var HomeController = require('./controllers/HomeController');
 var AddUserController = require('./controllers/AddUserController');
 var AllUsersController = require('./controllers/AllUsersController');
 var LoginController = require('./controllers/LoginController');
@@ -19,8 +20,9 @@ var AuthenticationService = require('./services/AuthenticationService');
 var app = angular.module('root', ['ngRoute', 'ngCookies']);
 app.run(['$rootScope', '$location', '$cookieStore', '$http', RouteChangedHandler]);
 
-app.config(['$routeProvider', '$httpProvider', MainRoute]);
+app.config(['$routeProvider', '$httpProvider', '$locationProvider', MainRoute]);
 
+app.controller('HomeController', [HomeController]);
 app.controller('LoginController', ['$scope', '$rootScope', '$location', 'AuthenticationService', 'FlashService', LoginController]);
 app.controller('AddUserController', ['$scope', 'UserService', AddUserController]);
 app.controller('AllUsersController', ['$scope', 'UserService', AllUsersController]);

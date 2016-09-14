@@ -1,7 +1,11 @@
 'use strict';
 
-var MainRoute = function($routeProvider, $httpProvider) {
+var MainRoute = function($routeProvider, $httpProvider, $locationProvider) {
     $routeProvider.
+      when('/', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeController'
+      }).
       when('/addUser', {
         templateUrl: 'views/addUser.html',
         controller: 'AddUserController'
@@ -19,8 +23,10 @@ var MainRoute = function($routeProvider, $httpProvider) {
         controller: 'LogoutController'
       }).
       otherwise({
-        redirectTo: '/addUser'
+        redirectTo: '/'
       });
+    
+    $locationProvider.html5Mode(true);
     
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 };
