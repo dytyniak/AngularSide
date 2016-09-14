@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Diploma Project</title>
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+  <body ng-app="root">
+
+    <div class="container">
+		<div class="row">
+		<div class="col-md-3">
+			<ul class="nav">
+				<li><a href="#login"> Login </a></li>
+				<li><a href="#addNewUser"> Add New User </a></li>
+				<li><a href="#showUsers"> Show Users </a></li>
+				<li><a href="#logout"> Logout </a></li>
+			</ul>
+		</div>
+		<div class="col-md-9">
+		  	<div ng-view></div>
+		</div>
+		</div>
+    </div>
+	<script src="/js/bundle.js"></script>
+  </body>
+</html>

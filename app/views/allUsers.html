@@ -1,0 +1,19 @@
+<h2>All Users</h2>
+
+<table ng-show="users.length">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="u in users">
+            <td>{{u.id}}</td>
+            <td>{{u.login}}</td>
+        </tr>
+    </tbody>
+</table>
+<div ng-show="!users.length">
+    No data to display!
+</div>

@@ -1,0 +1,22 @@
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+body {
+  margin-top: 20px;
+  background: #D3D3D3;
+  color: #434343;
+  h1 {
+    color: #333333;
+  }
+} 
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
