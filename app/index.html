@@ -4,26 +4,38 @@
     <title>Diploma Project</title>
     <meta charset="utf-8">
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/landing-page.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
     <base href="/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
 
-  <body ng-app="root">
+  <body ng-app="root" ng-controller="MainController">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="navbar-header">
+          <a class="navbar-brand" href="/">Diploma Project</a>
+      </div>
 
-    <div class="container">
-		<div class="row">
-		<div class="col-md-3">
-			<ul class="nav">
-				<li><a href="#login"> Login </a></li>
-				<li><a href="#addNewUser"> Add New User </a></li>
-				<li><a href="#showUsers"> Show Users </a></li>
-				<li><a href="#logout"> Logout </a></li>
-			</ul>
-		</div>
-		<div class="col-md-9">
-		  	<div ng-view></div>
-		</div>
-		</div>
-    </div>
+      <!-- submenu elements for #b-menu-2 -->
+      <div class="collapse navbar-collapse" id="b-menu-2">
+        <ul class="nav navbar-nav">
+          <li ng-cloak ng-class="{active:isActive('/')}"><a href="/"><span class="fa fa-home fa-lg"></span> Home</a></li>
+          <li  ng-cloak ng-show="loggedIn" ng-class="{active:isActive('/map')}"><a href="/map"><span class="fa fa-map fa-lg"></span> Map</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-cloak ng-show="loggedIn"><a><span class="glyphicon glyphicon-user"></span> {{currentUsername}}</a></li>
+          <li ng-cloak ng-hide="loggedIn"><a href="/login"><span class="fa fa-sign-in fa-lg"></span> Sign In</a></li>
+          <li ng-cloak ng-hide="loggedIn"><a href="/register"><span class="fa fa-registered fa-lg"></span> Register</a></li>
+          <li ng-cloak ng-show="loggedIn" ng-click="logout()"><a href="/login"><span class="fa fa-sign-out fa-lg"></span> Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div ng-view class="content col-md-12"></div>
+    <div class="myFooter col-md-12" ng-include src="'views/footer.html'"></div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="/js/bundle.js"></script>
   </body>
 </html>

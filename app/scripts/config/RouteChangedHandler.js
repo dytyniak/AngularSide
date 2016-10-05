@@ -13,10 +13,10 @@ var RouteChangedHandler = function($rootScope, $location, $cookieStore, $http) {
         var restrictedPage = $location.path() == '/login' || $location.path() == '/register';
         var loggedIn = $rootScope.globals.currentUser;
         var isHomePage = $location.path() == '/';
-        console.log($location.path());
-        if(loggedIn && restrictedPage || isHomePage) {
-            $location.path('/');                                    
-        }else if (!restrictedPage && !loggedIn) {
+        var isMap = $location.path() == '/map';
+        if(restrictedPage && loggedIn){
+            $location.path('/');
+        }else if (!loggedIn && !isHomePage) {
             $location.path('/login');
         }
     });

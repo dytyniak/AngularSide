@@ -6,21 +6,17 @@ var MainRoute = function($routeProvider, $httpProvider, $locationProvider) {
         templateUrl: 'views/home.html',
         controller: 'HomeController'
       }).
-      when('/addUser', {
-        templateUrl: 'views/addUser.html',
-        controller: 'AddUserController'
-      }).
       when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginController'
       }).
-      when('/showUsers', {
-        templateUrl: 'views/allUsers.html',
-        controller: 'AllUsersController'
+      when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterController'
       }).
-      when('/logout', {
-        templateUrl: 'views/login.html',
-        controller: 'LogoutController'
+      when('/map', {
+        templateUrl: 'views/map.html',
+        controller: 'MapController'
       }).
       otherwise({
         redirectTo: '/'

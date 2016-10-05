@@ -7,11 +7,13 @@ var AuthenticationService = function(Base64, $http, $cookieStore, $rootScope, $t
     service.Login = function (username, password, callback) {
         $http.post('http://localhost:8080/login', { username: username, password: password })
             .success(function (response) {
-                if(response) {
-                    response.success = true;    
-                }else {
-                    response = 'Invalid username or password';
-                }
+                callback(response);
+            });
+    };
+    
+    service.register = function (username, password, callback) {
+        $http.post('http://localhost:8080/register', { username: username, password: password })
+            .success(function (response) {
                 callback(response);
             });
     };

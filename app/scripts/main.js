@@ -1,35 +1,36 @@
 var angular = require('angular'); // That's right! We can just require angular as if we were in node
 var angularRoute = require('angular-route');
 var angularCookies = require('angular-cookies');
+var ngMap = require('ngMap');
 
 var MainRoute = require('./config/RouteConfig');
 var RouteChangedHandler = require('./config/RouteChangedHandler');
 
+var MainController = require('./controllers/MainController');
 var HomeController = require('./controllers/HomeController');
-var AddUserController = require('./controllers/AddUserController');
-var AllUsersController = require('./controllers/AllUsersController');
 var LoginController = require('./controllers/LoginController');
-var LogoutController = require('./controllers/LogoutController');
+var RegisterController = require('./controllers/RegisterController');
+var MapController = require('./controllers/MapController');
 
 var UserService = require('./services/UserService');
-var FlashService = require('./services/FlashService');
+var RouteService = require('./services/RouteService');
 var Base64 = require('./services/Base64');
 var AuthenticationService = require('./services/AuthenticationService');
 
-
-var app = angular.module('root', ['ngRoute', 'ngCookies']);
+var app = angular.module('root', ['ngRoute', 'ngCookies', 'ngMap']);
 app.run(['$rootScope', '$location', '$cookieStore', '$http', RouteChangedHandler]);
 
 app.config(['$routeProvider', '$httpProvider', '$locationProvider', MainRoute]);
 
+app.controller('MainController', ['$scope', '$rootScope', 'AuthenticationService', '$location', MainController]);
 app.controller('HomeController', [HomeController]);
-app.controller('LoginController', ['$scope', '$rootScope', '$location', 'AuthenticationService', 'FlashService', LoginController]);
-app.controller('AddUserController', ['$scope', 'UserService', AddUserController]);
-app.controller('AllUsersController', ['$scope', 'UserService', AllUsersController]);
-app.controller('LogoutController', ['AuthenticationService', '$location', LogoutController]);
+app.controller('LoginController', ['$scope', '$rootScope', '$location', 'AuthenticationService', LoginController]);
+app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'AuthenticationService', RegisterController]);
 
 app.service('UserService', ['$http', UserService]);
+app.service('RouteService', ['$http', RouteService]);
 
 app.factory('Base64', [Base64]);
 app.factory('AuthenticationService', ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout', AuthenticationService]);
-app.factory('FlashService', ['$rootScope', FlashService]);
+
+app.controller('MapController', ['$scope', 'NgMap', 'RouteService', MapController]);

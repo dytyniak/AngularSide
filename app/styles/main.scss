@@ -1,22 +1,72 @@
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+.content.col-md-12.ng-scope {
+    padding: 0px;
+    min-height: 100%;
+}
 
+.nav.navbar-nav.navbar-right {
+    margin-right: 10px;
+}
+/* 
+  Allow angular.js to be loaded in body, hiding cloaked elements until 
+  templates compile.  The !important is important given that there may be 
+  other selectors that are more specific or come later and might alter display.  
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+th, .glyphicon-refresh {
+    cursor: pointer;
+}
+
+.glyphicon-eye-open,
+.glyphicon-eye-close {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+html,
 body {
-  margin-top: 20px;
-  background: #D3D3D3;
-  color: #434343;
-  h1 {
-    color: #333333;
-  }
-} 
-
-table {
-    border-collapse: collapse;
+	position:relative;
     width: 100%;
+	height:100%;
+    min-height:100%;
+    padding-top: 25px;
+	margin:0;
 }
 
-th, td {
-    text-align: left;
-    padding: 8px;
+.myFooter.col-md-12.ng-scope {
+    padding: 0px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+
+.map {
+    display: inline-block;
+}
+
+ng-map {
+    width: 1250px;
+    height: 800px;
+}
+
+.controlPanel {
+    padding: 10px;
+    width: 20%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+.showRoute {
+    margin-top: 10px;
+}

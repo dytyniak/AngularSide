@@ -27,7 +27,7 @@ server.all('/*', function(req, res) {
 });
 
 // Dev task
-gulp.task('dev', ['clean', 'views', 'styles', 'lint', 'browserify'], function() { 
+gulp.task('dev', ['clean', 'views', 'styles', 'lint', 'browserify', 'icons'], function() { 
     gulp.run('watch');
 });
 
@@ -46,13 +46,18 @@ gulp.task('lint', function() {
 
 // Styles task
 gulp.task('styles', function() {
-  gulp.src('app/styles/*.scss')
+  gulp.src(['app/styles/*.scss', 'app/styles/font-awesome/scss/*.scss'])
   // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
   .pipe(sass({onError: function(e) { console.log(e); } }))
   // Optionally add autoprefixer
   .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
   // These last two should look familiar now :)
   .pipe(gulp.dest('dist/css/'));
+});
+
+gulp.task('icons', function() {
+    return gulp.src('app/styles/font-awesome/fonts/**.*')
+        .pipe(gulp.dest('dist/fonts'));
 });
 
 // Browserify task
