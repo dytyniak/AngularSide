@@ -6,8 +6,8 @@ var LoginController = function ($scope, $rootScope, $location, AuthenticationSer
     AuthenticationService.ClearCredentials();
 
     $scope.login = function () {
+        debugger;
         AuthenticationService.Login($scope.username, $scope.password, function(response) {
-            debugger;
              if(response) {
                 AuthenticationService.SetCredentials($scope.username, $scope.password);
                 $location.path('/');

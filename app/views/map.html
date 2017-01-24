@@ -1,8 +1,11 @@
 
 <div class="mapContainer">
     <div class="controlPanel">
-        <input class="form-control" type="text" ng-model="busName">
-        <button class="btn btn-default showRoute" ng-click="showRoute()">Show route</button>
+        <ul class="routes">
+            <div ng-repeat="route in routes" ng-class="{active: route.active}" ng-click="showRoute(route)">{{route.name}}
+                <li ng-repeat="driver in route.drivers">{{driver.lastName}} {{driver.firstName}}</li>
+            </div>
+        </ul>
     </div>
     <div class="map" map-lazy-load="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwph0GH1oFAHFlNONuz5_Go7_qSmEfAGM&language=uk">
         <ng-map center="current-location" scrollwheel="false" default-style="false" zoom="15" tilt="0">

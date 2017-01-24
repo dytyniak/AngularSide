@@ -12,7 +12,6 @@ var LoginController = require('./controllers/LoginController');
 var RegisterController = require('./controllers/RegisterController');
 var MapController = require('./controllers/MapController');
 
-var UserService = require('./services/UserService');
 var RouteService = require('./services/RouteService');
 var Base64 = require('./services/Base64');
 var AuthenticationService = require('./services/AuthenticationService');
@@ -27,7 +26,6 @@ app.controller('HomeController', [HomeController]);
 app.controller('LoginController', ['$scope', '$rootScope', '$location', 'AuthenticationService', LoginController]);
 app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'AuthenticationService', RegisterController]);
 
-app.service('UserService', ['$http', UserService]);
 app.service('RouteService', ['$http', RouteService]);
 
 app.factory('Base64', [Base64]);

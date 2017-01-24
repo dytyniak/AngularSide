@@ -9,18 +9,16 @@ var RouteChangedHandler = function($rootScope, $location, $cookieStore, $http) {
     }
 
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
-        // redirect to login page if not logged in and trying to access a restricted page
-        var restrictedPage = $location.path() == '/login' || $location.path() == '/register';
+        var isLoginPage = $location.path() == '/login';
+        var isRegiserPage = $location.path() == '/register';
         var loggedIn = $rootScope.globals.currentUser;
         var isHomePage = $location.path() == '/';
         var isMap = $location.path() == '/map';
-        if(restrictedPage && loggedIn){
+        if(!loggedIn && !isHomePage && !isLoginPage && !isRegiserPage){
             $location.path('/');
-        }else if (!loggedIn && !isHomePage) {
-            $location.path('/login');
         }
     });
-}
+};
                    
 module.exports = RouteChangedHandler;
                 

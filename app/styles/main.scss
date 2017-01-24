@@ -55,8 +55,8 @@ body {
 }
 
 ng-map {
-    width: 1250px;
-    height: 800px;
+    width: 1262px;
+    height: 720px;
 }
 
 .controlPanel {
@@ -67,6 +67,15 @@ ng-map {
     text-align: center;
 }
 
-.showRoute {
-    margin-top: 10px;
+.routes div {
+    list-style: none;
+    border: 1px solid grey;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 20px;
+    &:hover, .active {
+        background-color: beige;
+    }
 }
+
+.class{}
